@@ -3,7 +3,7 @@
     <div class="card-body">
       <h5 class="card-title">{{ genre }}</h5>
       <QuoteAuthor :author="author" />
-      <QuoteText :quote="quote" />
+      <QuoteText :quote="quoteText" />
     </div>
     <button
       class="btn btn-lg btn-info justify-content-center"
@@ -17,7 +17,6 @@
 <script>
 import QuoteText from "./QuoteText";
 import QuoteAuthor from "./QuoteAuthor";
-import axios from "axios";
 export default {
   components: {
     QuoteText,
@@ -25,31 +24,26 @@ export default {
   },
   data() {
     return {
-      quote: String,
-      author: String,
-      genre: String,
+      quoteText: "",
+      author: "",
+      genre: "",
     };
   },
+  props: ["quote", "getRandomQuote"],
   methods: {
-    getRandomQuote() {
-      return axios.get(
-        "https://quote-garden.herokuapp.com/api/v3/quotes/random"
-      );
-    },
     handleClick() {
+      console.log("Pressed");
       this.getRandomQuote().then((res) => {
-        this.quote = res.data.data[0].quoteText;
+        this.quoteText = res.data.data[0].quoteText;
         this.author = res.data.data[0].quoteAuthor;
         this.genre = res.data.data[0].quoteGenre.toUpperCase();
       });
     },
   },
   beforeMount() {
-    this.getRandomQuote().then((res) => {
-      this.quote = res.data.data[0].quoteText;
-      this.author = res.data.data[0].quoteAuthor;
-      this.genre = res.data.data[0].quoteGenre.toUpperCase();
-    });
+    this.quoteText = this.quote.data.data[0].quoteText;
+    this.author = this.quote.data.data[0].quoteAuthor;
+    this.genre = this.quote.data.data[0].quoteGenre.toUpperCase();
   },
 };
 </script>

@@ -1,19 +1,45 @@
 <template>
   <div class="container">
-    <div class="row rows-cols-3">
-      <div class="col"></div>
-      <div class="col"><Quote /></div>
-      <div class="col"></div>
-    </div>
+    <QuoteBoxList :quote="quote" :getRandomQuote="getRandomQuote" />
   </div>
 </template>
 
 <script>
-import Quote from "./components/Quote";
+import QuoteBoxList from "./components/QuoteBoxList";
+
+import axios from "axios";
 export default {
   name: "App",
   components: {
-    Quote,
+    QuoteBoxList,
+  },
+  data() {
+    return {
+      quote: null,
+      author: "",
+    };
+  },
+  methods: {
+    async getRandomQuote() {
+      return await axios.get(
+        "https://quote-garden.herokuapp.com/api/v3/quotes/random"
+      );
+    },
+    async getAuthorQuotes(author) {
+      return await axios.get(
+        "https://quote-garden.herokuapp.com/api/v3/quotes/",
+        {
+          params: {
+            author: author,
+          },
+        }
+      );
+    },
+  },
+  beforeMount() {
+    this.getRandomQuote().then((res) => {
+      this.quote = res;
+    });
   },
 };
 </script>
