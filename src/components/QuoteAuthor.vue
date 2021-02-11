@@ -1,5 +1,5 @@
 <template>
-  <div>{{ author }}</div>
+  <h6 class="card-subtitle mb-2 text-muted">Quote By: {{ author }}</h6>
 </template>
 
 <script>

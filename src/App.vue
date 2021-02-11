@@ -1,16 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
-  <Quote />
+  <div class="container">
+    <div class="row rows-cols-3">
+      <div class="col"></div>
+      <div class="col"><Quote /></div>
+      <div class="col"></div>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 import Quote from "./components/Quote";
 export default {
   name: "App",
   components: {
-    HelloWorld,
     Quote,
   },
 };

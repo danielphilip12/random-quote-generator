@@ -1,5 +1,5 @@
 <template>
-  <div>{{ quote }}</div>
+  <div class="card-text">{{ quote }}</div>
 </template>
 
 <script>

@@ -1,8 +1,16 @@
 <template>
-  <div>
-    <QuoteText :quote="quote" />
-    <QuoteAuthor :author="author" />
-    <button @click="handleClick">New Quote</button>
+  <div class="card d-flex" style="width: 400px; height: 300px;">
+    <div class="card-body">
+      <h5 class="card-title">{{ genre }}</h5>
+      <QuoteAuthor :author="author" />
+      <QuoteText :quote="quote" />
+    </div>
+    <button
+      class="btn btn-lg btn-info justify-content-center"
+      @click="handleClick"
+    >
+      New Quote
+    </button>
   </div>
 </template>
 
@@ -19,6 +27,7 @@ export default {
     return {
       quote: String,
       author: String,
+      genre: String,
     };
   },
   methods: {
@@ -31,15 +40,16 @@ export default {
       this.getRandomQuote().then((res) => {
         this.quote = res.data.data[0].quoteText;
         this.author = res.data.data[0].quoteAuthor;
+        this.genre = res.data.data[0].quoteGenre.toUpperCase();
       });
     },
   },
   beforeMount() {
-    const x = this.getRandomQuote().then((res) => {
+    this.getRandomQuote().then((res) => {
       this.quote = res.data.data[0].quoteText;
       this.author = res.data.data[0].quoteAuthor;
+      this.genre = res.data.data[0].quoteGenre.toUpperCase();
     });
-    console.log(`X: ${x}`);
   },
 };
 </script>
