@@ -1,5 +1,7 @@
 <template>
-  <QuoteBox :quote="quote" :getRandomQuote="getRandomQuote" />
+  <div v-for="quote in quotes" :key="quote">
+    <QuoteBox :quote="quote" :hideButton="hideButton" />
+  </div>
 </template>
 
 <script>
@@ -8,7 +10,7 @@ export default {
   components: {
     QuoteBox,
   },
-  props: ["quote", "getRandomQuote"],
+  props: ["quotes", "hideButton"],
 };
 </script>
 

@@ -7,6 +7,7 @@
     </div>
     <button
       class="btn btn-lg btn-info justify-content-center"
+      v-bind:class="{ 'd-none': hideButton }"
       @click="handleClick"
     >
       New Quote
@@ -29,10 +30,9 @@ export default {
       genre: "",
     };
   },
-  props: ["quote", "getRandomQuote"],
+  props: ["quote", "getRandomQuote", "hideButton"],
   methods: {
     handleClick() {
-      console.log("Pressed");
       this.getRandomQuote().then((res) => {
         this.quoteText = res.data.data[0].quoteText;
         this.author = res.data.data[0].quoteAuthor;
@@ -41,9 +41,10 @@ export default {
     },
   },
   beforeMount() {
-    this.quoteText = this.quote.data.data[0].quoteText;
-    this.author = this.quote.data.data[0].quoteAuthor;
-    this.genre = this.quote.data.data[0].quoteGenre.toUpperCase();
+    this.quoteText = this.quote.quoteText;
+    this.author = this.quote.quoteAuthor;
+    this.genre = this.quote.quoteGenre;
+    console.log(this.hideButton);
   },
 };
 </script>

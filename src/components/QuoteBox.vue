@@ -2,7 +2,11 @@
   <div class="row rows-cols-3">
     <div class="col"></div>
     <div class="col">
-      <Quote :quote="quote" :getRandomQuote="getRandomQuote" />
+      <Quote
+        :quote="quote"
+        :getRandomQuote="getRandomQuote"
+        :hideButton="hideButton"
+      />
     </div>
     <div class="col"></div>
   </div>
@@ -14,7 +18,7 @@ export default {
   components: {
     Quote,
   },
-  props: ["quote", "getRandomQuote"],
+  props: ["quote", "getRandomQuote", "hideButton"],
 };
 </script>
 
