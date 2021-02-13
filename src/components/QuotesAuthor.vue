@@ -3,6 +3,9 @@
     <router-link to="/">Random Quote</router-link>
     <h1>{{ $route.params.author }}</h1>
     <QuoteBoxList :quotes="quotes" :hideButton="true" />
+    <div class="spinner-grow text-primary" role="status" v-if="quotes === []">
+      <span class="sr-only"></span>
+    </div>
   </div>
 </template>
 

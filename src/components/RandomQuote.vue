@@ -6,6 +6,9 @@
       :hideButton="false"
       v-if="quote !== null"
     />
+    <div class="spinner-grow text-primary" role="status" v-if="quote == null">
+      <span class="sr-only"></span>
+    </div>
   </div>
 </template>
 
