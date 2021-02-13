@@ -44,7 +44,6 @@ export default {
     this.quoteText = this.quote.quoteText;
     this.author = this.quote.quoteAuthor;
     this.genre = this.quote.quoteGenre;
-    console.log(this.hideButton);
   },
 };
 </script>

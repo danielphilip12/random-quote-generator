@@ -20,7 +20,6 @@ export default {
   },
   methods: {
     async getAuthorQuotes(author) {
-      console.log("Request Sent");
       return await axios.get(
         "https://quote-garden.herokuapp.com/api/v3/quotes/",
         {
@@ -32,7 +31,6 @@ export default {
     },
   },
   created() {
-    console.log(this.$route.params.author);
     this.getAuthorQuotes(this.$route.params.author).then((res) => {
       for (let i = 0; i < res.data.data.length; i++) {
         let { quoteText, quoteAuthor, quoteGenre } = res.data.data[i];

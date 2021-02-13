@@ -29,7 +29,6 @@ export default {
     },
   },
   created() {
-    console.log("Created Random");
     this.getRandomQuote().then((res) => {
       let { quoteText, quoteAuthor, quoteGenre } = res.data.data[0];
       this.quote = {
