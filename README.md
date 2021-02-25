@@ -7,6 +7,8 @@ It uses the "Quote Garden" API to generate the quote.
 A user could also click on the name of the author of the quote to get a list of quotes from that author.
 This app also uses Vue-Router to seperate the random quote generator and the author quotes.
 
+Project: https://sharp-beaver-3ba056.netlify.app/
+
 ## Project setup
 
 ```
